@@ -1,0 +1,27 @@
+# Diretórios do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Dependências geradas
+/node_modules/
+/target/
+/out/
+/build/
+/bin/
+
+# IDEs e editores
+/.idea/
+/*.iml
+*.swp
+*.swo
+.vscode/
+
+# Eclipse / STS
+.project
+.classpath
+.settings/
+.springBeans
+.apt_generated/
+.factorypath
+
+# Arquivos de co
