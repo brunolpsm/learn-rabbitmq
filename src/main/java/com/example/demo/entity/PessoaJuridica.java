@@ -7,17 +7,13 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CNPJ;
 
-import java.io.Serializable;
-
 @Entity
 @Table(name = "pessoa_juridica")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PessoaJuridica extends Pessoa implements Serializable {
-
-    private static final long serialVersionUID = 8957976780241444861L;
+public class PessoaJuridica extends Pessoa {
 
     @NotNull(message = "A inscrição estadual não pode ser nula")
     @NotBlank(message = "Informe a inscrição estadual")

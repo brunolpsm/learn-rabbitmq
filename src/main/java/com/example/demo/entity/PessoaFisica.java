@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -18,9 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PessoaFisica extends Pessoa implements Serializable {
-
-    private static final long serialVersionUID = 5433853896583911713L;
+public class PessoaFisica extends Pessoa {
 
     @NotNull(message = "O RG não pode ser nulo")
     @NotBlank(message = "O RG não pode ser em branco")
@@ -53,20 +50,13 @@ public class PessoaFisica extends Pessoa implements Serializable {
     private String senha;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "desejos",
-        joinColumns = @JoinColumn(name = "pessoa_fisica", referencedColumnName = "id", nullable = false),
-        inverseJoinColumns = @JoinColumn(name = "produto", referencedColumnName = "id", nullable = false),
-        uniqueConstraints = @UniqueConstraint(columnNames = {"pessoa_fisica", "produto"})
-    )
+    @JoinTable(name = "desejos", joinColumns = @JoinColumn(name = "pessoa_fisica", referencedColumnName = "id", nullable = false), inverseJoinColumns = @JoinColumn(name = "produto", referencedColumnName = "id", nullable = false), uniqueConstraints = @UniqueConstraint(columnNames = {
+            "pessoa_fisica", "produto" }))
     private List<Produto> desejos = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "permissoes",
-        joinColumns = @JoinColumn(name = "nome_usuario", referencedColumnName = "nome_usuario", nullable = false, foreignKey = @ForeignKey(name = "fk_pessoa_fisica_nome_usuario_id")),
-        inverseJoinColumns = @JoinColumn(name = "permissao", referencedColumnName = "nome", nullable = false, foreignKey = @ForeignKey(name = "fk_pessoa_fisica_permissao_id")),
-        uniqueConstraints = @UniqueConstraint(columnNames = {"nome_usuario", "permissao"})
-    )
+    @JoinTable(name = "permissoes", joinColumns = @JoinColumn(name = "nome_usuario", referencedColumnName = "nome_usuario", nullable = false, foreignKey = @ForeignKey(name = "fk_pessoa_fisica_nome_usuario_id")), inverseJoinColumns = @JoinColumn(name = "permissao", referencedColumnName = "nome", nullable = false, foreignKey = @ForeignKey(name = "fk_pessoa_fisica_permissao_id")), uniqueConstraints = @UniqueConstraint(columnNames = {
+            "nome_usuario", "permissao" }))
     private List<Permissao> permissoes = new ArrayList<>();
+
 }
