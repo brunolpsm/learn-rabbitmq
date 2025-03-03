@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class HellloController implements Serializable {
+public class HelloController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
